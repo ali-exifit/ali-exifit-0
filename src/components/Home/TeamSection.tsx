@@ -20,7 +20,7 @@ const TeamSection: React.FC = () => {
   };
 
   return (
-    <section className="py-8 lg:py-12 relative">
+    <section className="py-4 relative" style={{ marginTop: '15px' }}>
       <div className="mx-4 sm:mx-6 lg:mx-8">
         <div className="blur-sheet rounded-3xl">
           <motion.div
@@ -28,7 +28,7 @@ const TeamSection: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={containerVariants}
-            className="container mx-auto px-6 sm:px-8 lg:px-12 py-12"
+            className="container mx-auto px-6 sm:px-8 lg:px-12 py-8"
           >
             {/* Section Header */}
             <motion.div variants={itemVariants} className="text-center mb-8">

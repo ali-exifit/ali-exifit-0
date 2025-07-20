@@ -20,14 +20,14 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-4" style={{ marginTop: '15px' }}>
       {/* Hero Content */}
-      <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8 max-w-5xl w-full">
+      <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8 max-w-5xl w-full relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="relative z-10 text-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16"
+          className="relative z-10 text-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16 pb-20"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -96,26 +96,26 @@ const Hero: React.FC = () => {
               </motion.button>
             </Link>
           </motion.div>
+
+          {/* Scroll Indicator - Inside the hero card */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            onClick={scrollToContent}
+            className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-gray-700 hover:text-gray-900 transition-colors z-20"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.2 }}
+              className="flex flex-col items-center space-y-2"
+            >
+              <span className="text-sm font-bold">ادامه مطالب</span>
+              <ChevronDown className="w-6 h-6" />
+            </motion.div>
+          </motion.button>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator - Fixed positioning */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        onClick={scrollToContent}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-700 hover:text-gray-900 transition-colors z-20"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.2 }}
-          className="flex flex-col items-center space-y-2"
-        >
-          <span className="text-sm font-bold">ادامه مطالب</span>
-          <ChevronDown className="w-6 h-6" />
-        </motion.div>
-      </motion.button>
     </section>
   );
 };

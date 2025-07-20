@@ -52,14 +52,14 @@ const FutureSection: React.FC = () => {
   };
 
   return (
-    <section className="py-8 lg:py-12 relative">
+    <section className="py-4 relative" style={{ marginTop: '15px' }}>
       <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
-          className="container mx-auto px-6 sm:px-8 lg:px-12 py-12"
+          className="container mx-auto px-6 sm:px-8 lg:px-12 py-8"
         >
           <motion.div variants={itemVariants} className="text-center mb-10">
             <div className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 mb-6">

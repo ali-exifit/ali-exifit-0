@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed top-4 left-4 right-4 z-50 max-w-7xl mx-auto"
+      className="fixed top-4 left-4 right-4 z-50 max-w-7xl mx-auto mb-4"
     >
       <div className="blur-sheet rounded-2xl shadow-xl">
         <div className="px-4 lg:px-6">
@@ -49,21 +49,25 @@ const Header: React.FC = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-3 lg:space-x-6 space-x-reverse">
+            <nav className="hidden md:flex items-center space-x-2 space-x-reverse">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`relative text-sm font-black transition-colors duration-200 whitespace-nowrap px-3 py-2 rounded-xl ${
+                  className={`relative text-sm font-black transition-all duration-300 whitespace-nowrap px-4 py-2 rounded-xl min-w-[80px] text-center ${
                     location.pathname === item.path
                       ? 'text-purple-600 bg-white/20 backdrop-blur-xl'
                       : 'text-gray-800 hover:text-purple-600 hover:bg-white/10'
-                  }`}
+                  } focus:outline-none focus:ring-0`}
                 >
                   {item.label}
                   {location.pathname === item.path && (
                     <motion.div
                       layoutId="activeTab"
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      exit={{ opacity: 0, scaleX: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-full"
                     />
                   )}
@@ -103,7 +107,7 @@ const Header: React.FC = () => {
                       <Link
                         to={item.path}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`block px-4 py-3 text-sm font-black transition-colors duration-200 ${
+                        className={`block px-4 py-3 text-sm font-black transition-colors duration-200 focus:outline-none ${
                           location.pathname === item.path
                             ? 'text-purple-600 bg-purple-50/50'
                             : 'text-gray-800 hover:text-purple-600 hover:bg-purple-50/30'

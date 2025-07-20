@@ -21,14 +21,14 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative mt-16 mb-4 mx-4 sm:mx-6 lg:mx-8">
+    <footer className="relative mb-4 mx-4 sm:mx-6 lg:mx-8" style={{ marginTop: '15px' }}>
       <div className="blur-sheet rounded-3xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="container mx-auto px-8 sm:px-12 lg:px-16 py-12 lg:py-16"
+          className="container mx-auto px-8 sm:px-12 lg:px-16 py-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
