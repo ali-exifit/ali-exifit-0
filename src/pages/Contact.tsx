@@ -11,9 +11,6 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  useEffect(() => {
-    document.title = 'تماس با ما - مدیریت سلامت نقره‌ای';
-  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -73,22 +70,22 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 lg:py-20 relative" style={{ marginTop: '15px' }}>
+      <section className="py-8 lg:py-12 relative" style={{ marginTop: '8px' }}>
         <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative z-10 container mx-auto px-8 sm:px-12 lg:px-16 py-12 text-center"
+            className="relative z-10 container mx-auto px-8 sm:px-12 lg:px-16 py-8 text-center"
           >
             <div className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 mb-8">
               <Sparkles className="w-5 h-5 text-purple-600" />
               <span className="text-gray-800 font-black">ارتباط با ما</span>
             </div>
-            <h1 className="text-4xl lg:text-7xl font-black mb-6 text-gray-800">
+            <h1 className="text-2xl lg:text-4xl font-black mb-6 text-gray-800">
               تماس با ما
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-semibold">
+            <p className="text-base text-gray-700 max-w-3xl mx-auto leading-relaxed font-semibold">
               آماده پاسخگویی به سوالات و ارائه مشاوره تخصصی هستیم
             </p>
           </motion.div>
@@ -96,7 +93,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Contact Content */}
-      <section className="py-4" style={{ marginTop: '15px' }}>
+      <section className="py-4" style={{ marginTop: '8px' }}>
         <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
           <motion.div
             initial="hidden"

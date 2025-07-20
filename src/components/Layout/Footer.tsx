@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative mb-4 mx-4 sm:mx-6 lg:mx-8" style={{ marginTop: '15px' }}>
+    <footer className="relative mb-4 mx-4 sm:mx-6 lg:mx-8" style={{ marginTop: '8px' }}>
       <div className="blur-sheet rounded-3xl">
         <motion.div
           initial="hidden"

@@ -4,9 +4,6 @@ import TeamSection from '../components/Home/TeamSection';
 import FutureSection from '../components/Home/FutureSection';
 
 const Home: React.FC = () => {
-  useEffect(() => {
-    document.title = 'مدیریت سلامت نقره‌ای - خانه';
-  }, []);
 
   return (
     <div>

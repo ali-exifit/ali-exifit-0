@@ -6,9 +6,6 @@ import { products } from '../data/products';
 const Products: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'محصولات - مدیریت سلامت نقره‌ای';
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,22 +27,22 @@ const Products: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 lg:py-20 relative" style={{ marginTop: '15px' }}>
+      <section className="py-8 lg:py-12 relative" style={{ marginTop: '8px' }}>
         <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative z-10 container mx-auto px-8 sm:px-12 lg:px-16 py-12"
+            className="relative z-10 container mx-auto px-8 sm:px-12 lg:px-16 py-8 text-center"
           >
             <div className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 mb-8">
               <Sparkles className="w-5 h-5 text-purple-600" />
               <span className="text-gray-800 font-black">محصولات نوآورانه</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 text-gray-800">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-6 text-gray-800">
               محصولات ما
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-semibold">
+            <p className="text-base lg:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed font-semibold">
               راه‌حل‌های نوآورانه برای صنعت سلامت
             </p>
           </motion.div>
@@ -53,7 +50,7 @@ const Products: React.FC = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-4" style={{ marginTop: '15px' }}>
+      <section className="py-4" style={{ marginTop: '8px' }}>
         <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
           <motion.div
             initial="hidden"

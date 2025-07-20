@@ -52,7 +52,7 @@ const FutureSection: React.FC = () => {
   };
 
   return (
-    <section className="py-4 relative" style={{ marginTop: '15px' }}>
+    <section className="py-4 relative" style={{ marginTop: '8px' }}>
       <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
         <motion.div
           initial="hidden"
