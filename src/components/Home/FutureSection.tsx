@@ -127,8 +127,6 @@ const FutureSection: React.FC = () => {
             </motion.button>
           </motion.div>
           </div>
-        </motion.div>
-      </div>
     </section>
   );
 };
