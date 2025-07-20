@@ -52,21 +52,21 @@ const FutureSection: React.FC = () => {
   };
 
   return (
-    <section className="py-4 relative" style={{ marginTop: '8px' }}>
-      <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
+    <section className="relative">
+      <div className="blur-sheet rounded-3xl responsive-margin">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
-          className="container mx-auto px-6 sm:px-8 lg:px-12 py-8"
+          className="container mx-auto responsive-padding section-container"
         >
-          <motion.div variants={itemVariants} className="text-center mb-10">
-            <div className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 mb-6">
+          <motion.div variants={itemVariants} className="text-center content-spacing">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3">
               <Sparkles className="w-5 h-5 text-purple-600" />
               <span className="text-gray-800 font-black">برنامه‌های آینده</span>
             </div>
-            <h2 className="text-2xl lg:text-4xl font-black mb-6 text-gray-800">
+            <h2 className="text-2xl lg:text-4xl font-black text-gray-800">
               نقشه راه نوآوری
             </h2>
             <p className="text-base text-gray-700 max-w-3xl mx-auto font-semibold">
@@ -82,7 +82,7 @@ const FutureSection: React.FC = () => {
                 whileHover={{ scale: 1.03, y: -5 }}
                 className="group"
               >
-                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
+                  <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
                   <div className="flex items-start space-x-4 space-x-reverse">
                     <motion.div
                       whileHover={{ rotate: 360 }}
@@ -93,10 +93,11 @@ const FutureSection: React.FC = () => {
                     </motion.div>
                     
                     <div className="flex-1">
-                      <h3 className="text-lg font-black text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
+                        <div className="content-stack-sm">
+                          <h3 className="text-lg font-black text-gray-800 group-hover:text-purple-600 transition-colors">
                         {plan.title}
                       </h3>
-                      <p className="text-gray-700 mb-4 leading-relaxed font-semibold">
+                            <p className="text-gray-700 leading-relaxed font-semibold">
                         {plan.description}
                       </p>
                       <div className="flex items-center space-x-2 space-x-reverse">
@@ -106,6 +107,7 @@ const FutureSection: React.FC = () => {
                         </span>
                       </div>
                     </div>
+                        </div>
                   </div>
                 </div>
               </motion.div>
@@ -114,7 +116,7 @@ const FutureSection: React.FC = () => {
 
           <motion.div
             variants={itemVariants}
-            className="text-center mt-10"
+              className="text-center"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
@@ -124,6 +126,7 @@ const FutureSection: React.FC = () => {
               جزئیات بیشتر
             </motion.button>
           </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

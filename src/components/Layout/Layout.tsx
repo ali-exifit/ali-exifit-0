@@ -1,67 +1,133 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from './Header';
-import Footer from './Footer';
+import { motion } from 'framer-motion';
+import { Calendar, Target, Rocket, Users, TrendingUp, Award, Sparkles } from 'lucide-react';
 
-const Layout: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
+const FutureSection: React.FC = () => {
+  const plans = [
+    {
+      icon: Target,
+      title: "توسعه هوش مصنوعی",
+      description: "پیاده‌سازی الگوریتم‌های هوش مصنوعی برای تشخیص بهتر بیماری‌ها",
+      timeline: "ماه اول تا سوم"
+    },
+    {
+      icon: Rocket,
+      title: "اپلیکیشن موبایل",
+      description: "راه‌اندازی اپلیکیشن موبایل برای دسترسی آسان‌تر بیماران",
+      timeline: "ماه سوم تا چهارم"
+    },
+    {
+      icon: Users,
+      title: "شبکه پزشکان",
+      description: "ایجاد شبکه‌ای از پزشکان متخصص برای مشاوره آنلاین",
+      timeline: "ماه چهارم تا پنجم"
+    },
+    {
+      icon: TrendingUp,
+      title: "تحلیل داده‌ها",
+      description: "سیستم پیشرفته تحلیل داده‌های سلامت و ارائه گزارشات",
+      timeline: "ماه پنجم تا ششم"
+    },
+    {
+      icon: Award,
+      title: "استانداردسازی",
+      description: "دریافت گواهینامه‌های بین‌المللی کیفیت و امنیت",
+      timeline: "ماه ششم"
+    }
+  ];
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouseX(e.clientX);
-      setMouseY(e.clientY);
-    };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03
+      }
+    }
+  };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.2 } }
+  };
 
   return (
-    <div className="min-h-screen relative main-container">
-      {/* Animated background particles */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full opacity-20"
-            style={{
-              width: `${100 + i * 50}px`,
-              height: `${100 + i * 50}px`,
-              background: `radial-gradient(circle, ${
-                i % 4 === 0 ? 'hsla(280, 80%, 60%, 0.6)' : 
-                i % 4 === 1 ? 'hsla(200, 75%, 65%, 0.5)' : 
-                i % 4 === 2 ? 'hsla(320, 85%, 70%, 0.4)' :
-                'hsla(180, 70%, 65%, 0.5)'
-              } 0%, transparent 70%)`,
-              left: `${10 + (i * 15) + (Math.sin(scrollY * 0.002 + i) * 10)}%`,
-              top: `${10 + (i * 12) + (Math.cos(scrollY * 0.002 + i) * 8)}%`,
-              transform: `
-                translateY(${scrollY * (0.1 + i * 0.05)}px) 
-                rotate(${scrollY * 0.1 + mouseX * 0.02}deg)
-                scale(${1 + Math.sin(scrollY * 0.003 + i) * 0.2})
-              `,
-              transition: 'transform 0.2s ease-out'
-            }}
-          />
-        ))}
+    <section className="relative">
+      <div className="blur-sheet rounded-3xl responsive-margin">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="container mx-auto responsive-padding section-container"
+        >
+          <motion.div variants={itemVariants} className="text-center content-spacing">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <span className="text-gray-800 font-black">برنامه‌های آینده</span>
+            </div>
+            <h2 className="text-2xl lg:text-4xl font-black text-gray-800">
+              نقشه راه نوآوری
+            </h2>
+            <p className="text-base text-gray-700 max-w-3xl mx-auto font-semibold">
+              نگاهی به برنامه‌های توسعه و نوآوری ما در شش ماه آینده
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {plans.map((plan, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="group"
+              >
+                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
+                  <div className="flex items-start space-x-4 space-x-reverse">
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center"
+                    >
+                      <plan.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
+                        {plan.title}
+                      </h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed font-semibold">
+                        {plan.description}
+                      </p>
+                      <div className="flex items-center space-x-2 space-x-reverse">
+                        <Calendar className="w-5 h-5 text-purple-500" />
+                        <span className="text-purple-600 font-bold">
+                          {plan.timeline}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-10"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200"
+            >
+              جزئیات بیشتر
+            </motion.button>
+          </motion.div>
+        </motion.div>
       </div>
-      
-      <Header />
-      <main className="relative z-10 section-container">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    </section>
   );
 };
 
-export default Layout;
+export default FutureSection;

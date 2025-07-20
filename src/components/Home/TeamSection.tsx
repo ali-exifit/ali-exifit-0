@@ -1,47 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Crown, Star, Award } from 'lucide-react';
+import { Calendar, Target, Rocket, Users, TrendingUp, Award, Sparkles } from 'lucide-react';
 
-const TeamSection: React.FC = () => {
-  const departments = [
+const FutureSection: React.FC = () => {
+  const plans = [
     {
-      id: 1,
-      name: "بخش فناوری و توسعه",
-      leader: {
-        name: "دکتر محمد احمدی",
-        role: "مدیر فناوری",
-        image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg"
-      },
-      members: [
-        { name: "مهندس علی کریمی", role: "توسعه‌دهنده ارشد", image: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg" },
-        { name: "مهندس سارا محمدی", role: "طراح UI/UX", image: "https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg" }
-      ]
+      icon: Target,
+      title: "توسعه هوش مصنوعی",
+      description: "پیاده‌سازی الگوریتم‌های هوش مصنوعی برای تشخیص بهتر بیماری‌ها",
+      timeline: "ماه اول تا سوم"
     },
     {
-      id: 2,
-      name: "بخش پزشکی و مشاوره",
-      leader: {
-        name: "دکتر فاطمه رضایی",
-        role: "مدیر پزشکی",
-        image: "https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg"
-      },
-      members: [
-        { name: "دکتر حسین نوری", role: "متخصص قلب", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg" },
-        { name: "دکتر مریم احمدی", role: "متخصص اطفال", image: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg" }
-      ]
+      icon: Rocket,
+      title: "اپلیکیشن موبایل",
+      description: "راه‌اندازی اپلیکیشن موبایل برای دسترسی آسان‌تر بیماران",
+      timeline: "ماه سوم تا چهارم"
     },
     {
-      id: 3,
-      name: "بخش تحقیق و توسعه",
-      leader: {
-        name: "دکتر امیر حسینی",
-        role: "مدیر تحقیقات",
-        image: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg"
-      },
-      members: [
-        { name: "دکتر زهرا کریمی", role: "محقق ارشد", image: "https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg" },
-        { name: "مهندس رضا نوری", role: "تحلیلگر داده", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg" }
-      ]
+      icon: Users,
+      title: "شبکه پزشکان",
+      description: "ایجاد شبکه‌ای از پزشکان متخصص برای مشاوره آنلاین",
+      timeline: "ماه چهارم تا پنجم"
+    },
+    {
+      icon: TrendingUp,
+      title: "تحلیل داده‌ها",
+      description: "سیستم پیشرفته تحلیل داده‌های سلامت و ارائه گزارشات",
+      timeline: "ماه پنجم تا ششم"
+    },
+    {
+      icon: Award,
+      title: "استانداردسازی",
+      description: "دریافت گواهینامه‌های بین‌المللی کیفیت و امنیت",
+      timeline: "ماه ششم"
     }
   ];
 
@@ -50,147 +41,93 @@ const TeamSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.03
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.2 } }
   };
 
   return (
-    <section className="relative">
-      <div className="responsive-margin">
-        <div className="blur-sheet rounded-3xl">
+    <section className="py-4 relative" style={{ marginTop: '8px' }}>
+        <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={containerVariants}
-            className="container mx-auto responsive-padding section-container"
+            className="container mx-auto px-6 sm:px-8 lg:px-12 py-8"
           >
-            {/* Section Header */}
-            <motion.div variants={itemVariants} className="text-center content-spacing">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-4 py-2">
-                <Users className="w-4 h-4 text-purple-600" />
-                <span className="text-gray-800 font-bold text-sm">تیم متخصص ما</span>
-              </div>
-              <h2 className="text-2xl lg:text-3xl font-black text-gray-800">
-                ساختار سازمانی
-              </h2>
-              <p className="text-base text-gray-700 max-w-2xl mx-auto font-bold">
-                تیمی از بهترین متخصصان در سه بخش تخصصی
-              </p>
-            </motion.div>
+          <motion.div variants={itemVariants} className="text-center mb-10">
+            <div className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 mb-6">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <span className="text-gray-800 font-black">برنامه‌های آینده</span>
+            </div>
+            <h2 className="text-2xl lg:text-4xl font-black mb-6 text-gray-800">
+              نقشه راه نوآوری
+            </h2>
+            <p className="text-base text-gray-700 max-w-3xl mx-auto font-semibold">
+              نگاهی به برنامه‌های توسعه و نوآوری ما در شش ماه آینده
+            </p>
+          </motion.div>
 
-            {/* Departments Grid */}
-            <div className="card-container">
-              {departments.map((dept, index) => (
-                <motion.div
-                  key={dept.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  className="group"
-                >
-                  <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-200">
-                    {/* Department Header */}
-                    <div className="bg-gradient-to-r from-purple-500 to-emerald-500 responsive-padding-sm text-center">
-                      <h3 className="text-white font-black text-lg">
-                        {dept.name}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {plans.map((plan, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="group"
+              >
+                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
+                  <div className="flex items-start space-x-4 space-x-reverse">
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center"
+                    >
+                      <plan.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
+                        {plan.title}
                       </h3>
-                    </div>
-
-                    {/* Department Leader */}
-                    <div className="responsive-padding-sm border-b border-white/20">
-                      <div className="flex items-center gap-3">
-                        <div className="relative">
-                          <img
-                            src={dept.leader.image}
-                            alt={dept.leader.name}
-                            className="w-12 h-12 rounded-full object-cover"
-                          />
-                          <Crown className="absolute -top-1 -right-1 w-4 h-4 text-yellow-500" />
-                        </div>
-                        <div className="text-spacing">
-                          <h4 className="font-black text-gray-800 text-sm">
-                            {dept.leader.name}
-                          </h4>
-                          <p className="text-purple-600 font-bold text-xs">
-                            {dept.leader.role}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Department Members */}
-                    <div className="responsive-padding-sm content-spacing">
-                      <h5 className="font-black text-gray-800 text-sm flex items-center gap-1">
-                        <Star className="w-4 h-4 text-emerald-500 ml-1" />
-                        اعضای تیم
-                      </h5>
-                      <div className="text-spacing">
-                        {dept.members.map((member, memberIndex) => (
-                          <div key={memberIndex} className="flex items-center gap-3">
-                            <img
-                              src={member.image}
-                              alt={member.name}
-                              className="w-8 h-8 rounded-full object-cover"
-                            />
-                            <div className="text-spacing">
-                              <p className="font-bold text-gray-800 text-xs">
-                                {member.name}
-                              </p>
-                              <p className="text-gray-600 font-semibold text-xs">
-                                {member.role}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Department Stats */}
-                    <div className="bg-white/20 responsive-padding-sm text-center">
-                      <div className="flex justify-center items-center gap-2">
-                        <Award className="w-4 h-4 text-purple-500" />
-                        <span className="text-gray-800 font-bold text-xs">
-                          {dept.members.length + 1} متخصص
+                      <p className="text-gray-700 mb-4 leading-relaxed font-semibold">
+                        {plan.description}
+                      </p>
+                      <div className="flex items-center space-x-2 space-x-reverse">
+                        <Calendar className="w-5 h-5 text-purple-500" />
+                        <span className="text-purple-600 font-bold">
+                          {plan.timeline}
                         </span>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-            {/* Call to Action */}
-            <motion.div
-              variants={itemVariants}
-              className="text-center mt-8"
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-10"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200"
             >
-              <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl responsive-padding max-w-lg mx-auto content-spacing">
-                <h3 className="text-lg font-black text-gray-800">
-                  به تیم ما بپیوندید
-                </h3>
-                <p className="text-gray-700 font-semibold text-sm">
-                  در حال جستجوی استعدادهای جدید برای توسعه آینده سلامت دیجیتال
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-6 py-2 rounded-lg font-bold text-sm transition-all duration-200"
-                >
-                  مشاهده فرصت‌های شغلی
-                </motion.button>
-              </div>
-            </motion.div>
+              جزئیات بیشتر
+            </motion.button>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default TeamSection;
+export default FutureSection;

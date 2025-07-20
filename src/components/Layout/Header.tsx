@@ -1,130 +1,133 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Target, Rocket, Users, TrendingUp, Award, Sparkles } from 'lucide-react';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { path: '/', label: 'خانه' },
-    { path: '/products', label: 'محصولات' },
-    { path: '/events', label: 'رویدادها' },
-    { path: '/contact', label: 'تماس با ما' }
+const FutureSection: React.FC = () => {
+  const plans = [
+    {
+      icon: Target,
+      title: "توسعه هوش مصنوعی",
+      description: "پیاده‌سازی الگوریتم‌های هوش مصنوعی برای تشخیص بهتر بیماری‌ها",
+      timeline: "ماه اول تا سوم"
+    },
+    {
+      icon: Rocket,
+      title: "اپلیکیشن موبایل",
+      description: "راه‌اندازی اپلیکیشن موبایل برای دسترسی آسان‌تر بیماران",
+      timeline: "ماه سوم تا چهارم"
+    },
+    {
+      icon: Users,
+      title: "شبکه پزشکان",
+      description: "ایجاد شبکه‌ای از پزشکان متخصص برای مشاوره آنلاین",
+      timeline: "ماه چهارم تا پنجم"
+    },
+    {
+      icon: TrendingUp,
+      title: "تحلیل داده‌ها",
+      description: "سیستم پیشرفته تحلیل داده‌های سلامت و ارائه گزارشات",
+      timeline: "ماه پنجم تا ششم"
+    },
+    {
+      icon: Award,
+      title: "استانداردسازی",
+      description: "دریافت گواهینامه‌های بین‌المللی کیفیت و امنیت",
+      timeline: "ماه ششم"
+    }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.2 } }
+  };
+
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
-      className="fixed top-0 left-0 right-0 z-50 responsive-padding-sm"
-    >
-      <div className="blur-sheet rounded-2xl shadow-xl max-w-7xl mx-auto">
-        <div className="responsive-padding-sm">
-          <div className="flex justify-between items-center min-h-[3.5rem]">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 space-x-reverse flex-shrink-0">
+    <section className="py-4 relative" style={{ marginTop: '8px' }}>
+      <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="container mx-auto px-6 sm:px-8 lg:px-12 py-8"
+        >
+          <motion.div variants={itemVariants} className="text-center mb-10">
+            <div className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 mb-6">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <span className="text-gray-800 font-black">برنامه‌های آینده</span>
+            </div>
+            <h2 className="text-2xl lg:text-4xl font-black mb-6 text-gray-800">
+              نقشه راه نوآوری
+            </h2>
+            <p className="text-base text-gray-700 max-w-3xl mx-auto font-semibold">
+              نگاهی به برنامه‌های توسعه و نوآوری ما در شش ماه آینده
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {plans.map((plan, index) => (
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.1 }}
-                className="flex items-center space-x-2 space-x-reverse"
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="group"
               >
-                <Heart className="w-6 h-6 text-purple-500" />
-                <span className="text-lg font-black bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent whitespace-nowrap">
-                  مدیریت سلامت نقره‌ای
-                </span>
-              </motion.div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`relative text-sm font-black transition-all duration-300 whitespace-nowrap px-4 py-2 rounded-xl min-w-[5rem] text-center ${
-                    location.pathname === item.path
-                      ? 'text-purple-600 bg-white/20 backdrop-blur-xl'
-                      : 'text-gray-800 hover:text-purple-600 hover:bg-white/10'
-                  } focus:outline-none focus:ring-0`}
-                >
-                  {item.label}
-                  {location.pathname === item.path && (
+                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
+                  <div className="flex items-start space-x-4 space-x-reverse">
                     <motion.div
-                      layoutId="activeTab"
-                      initial={{ opacity: 0, scaleX: 0 }}
-                      animate={{ opacity: 1, scaleX: 1 }}
-                      exit={{ opacity: 0, scaleX: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-full"
-                    />
-                  )}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.1 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-2xl bg-white/20 backdrop-blur-xl hover:bg-white/30 transition-all duration-200 flex-shrink-0"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </motion.button>
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center"
+                    >
+                      <plan.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
+                        {plan.title}
+                      </h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed font-semibold">
+                        {plan.description}
+                      </p>
+                      <div className="flex items-center space-x-2 space-x-reverse">
+                        <Calendar className="w-5 h-5 text-purple-500" />
+                        <span className="text-purple-600 font-bold">
+                          {plan.timeline}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.nav
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.2 }}
-                className="md:hidden bg-white/20 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl content-spacing"
-              >
-                <div className="text-spacing">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.path}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.03, duration: 0.2 }}
-                    >
-                      <Link
-                        to={item.path}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={`block px-4 py-3 text-sm font-black transition-colors duration-200 focus:outline-none ${
-                          location.pathname === item.path
-                            ? 'text-purple-600 bg-purple-50/50'
-                            : 'text-gray-800 hover:text-purple-600 hover:bg-purple-50/30'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.nav>
-            )}
-          </AnimatePresence>
-        </div>
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-10"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200"
+            >
+              جزئیات بیشتر
+            </motion.button>
+          </motion.div>
+        </motion.div>
       </div>
-    </motion.header>
+    </section>
   );
 };
 
-export default Header;
+export default FutureSection;
