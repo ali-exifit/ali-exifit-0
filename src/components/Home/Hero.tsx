@@ -76,7 +76,6 @@ const FutureSection: React.FC = () => {
               <span className="text-gray-800 font-black">نوآوری در سلامت دیجیتال</span>
             </motion.div>
             </p>
-          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {plans.map((plan, index) => (
