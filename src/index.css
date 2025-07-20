@@ -1,81 +1,87 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Target, Rocket, Users, TrendingUp, Award, Sparkles } from 'lucide-react';
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-const FutureSection: React.FC = () => {
-  const plans = [
-    {
-      icon: Target,
-      title: "توسعه هوش مصنوعی",
-      description: "پیاده‌سازی الگوریتم‌های هوش مصنوعی برای تشخیص بهتر بیماری‌ها",
-      timeline: "ماه اول تا سوم"
-    },
-    {
-      icon: Rocket,
-      title: "اپلیکیشن موبایل",
-      description: "راه‌اندازی اپلیکیشن موبایل برای دسترسی آسان‌تر بیماران",
-      timeline: "ماه سوم تا چهارم"
-    },
-    {
-      icon: Users,
-      title: "شبکه پزشکان",
-      description: "ایجاد شبکه‌ای از پزشکان متخصص برای مشاوره آنلاین",
-      timeline: "ماه چهارم تا پنجم"
-    },
-    {
-      icon: TrendingUp,
-      title: "تحلیل داده‌ها",
-      description: "سیستم پیشرفته تحلیل داده‌های سلامت و ارائه گزارشات",
-      timeline: "ماه پنجم تا ششم"
-    },
-    {
-      icon: Award,
-      title: "استانداردسازی",
-      description: "دریافت گواهینامه‌های بین‌المللی کیفیت و امنیت",
-      timeline: "ماه ششم"
-    }
-  ];
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.03
-      }
-    }
-  };
+html {
+  scroll-behavior: smooth;
+}
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.2 } }
-  };
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  transition: all 0.5s ease-in-out;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  min-height: 100vh;
+}
 
-  return (
-    <section className="relative">
-      <div className="blur-sheet rounded-3xl responsive-margin">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-          className="container mx-auto responsive-padding section-container"
-        >
-          <motion.div variants={itemVariants} className="text-center content-spacing">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3">
-              <Sparkles className="w-5 h-5 text-purple-600" />
-              <span className="text-gray-800 font-black">برنامه‌های آینده</span>
-            </div>
-            <h2 className="text-2xl lg:text-4xl font-black text-gray-800">
-              نقشه راه نوآوری
-            </h2>
-            <p className="text-base text-gray-700 max-w-3xl mx-auto font-semibold">
-              نگاهی به برنامه‌های توسعه و نوآوری ما در شش ماه آینده
-    padding: 0 32px 24px 32px;
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Remove focus outlines from navigation */
+a:focus,
+button:focus,
+.nav-link:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Blur Sheet Effect */
+.blur-sheet {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Spacing System */
+.main-layout {
+  padding-top: 100px; /* Fixed header height */
+}
+
+.section-spacing {
+  margin-bottom: 24px;
+}
+
+.section-spacing:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Margins */
+.responsive-margin {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .responsive-margin {
+    margin-left: 24px;
+    margin-right: 24px;
   }
 }
 
-/* Card Internal Spacing */
+@media (min-width: 1024px) {
+  .responsive-margin {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+/* Card Content Padding */
 .card-content {
   padding: 32px;
 }
@@ -109,63 +115,155 @@ const FutureSection: React.FC = () => {
   display: flex;
   flex-direction: column;
   gap: 32px;
-            </p>
-          </motion.div>
+}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {plans.map((plan, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.03, y: -5 }}
-                className="group"
-              >
-                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
-                  <div className="flex items-start space-x-4 space-x-reverse">
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center"
-                    >
-                      <plan.icon className="w-6 h-6 text-white" />
-                    </motion.div>
-                    
-                    <div className="flex-1">
-                      <h3 className="text-lg font-black text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
-                        {plan.title}
-                      </h3>
-                      <p className="text-gray-700 mb-4 leading-relaxed font-semibold">
-                        {plan.description}
-                      </p>
-                      <div className="flex items-center space-x-2 space-x-reverse">
-                        <Calendar className="w-5 h-5 text-purple-500" />
-                        <span className="text-purple-600 font-bold">
-                          {plan.timeline}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+/* Header Styles */
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 80px;
+}
 
-          <motion.div
-            variants={itemVariants}
-            className="text-center mt-10"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200"
-            >
-              جزئیات بیشتر
-            </motion.button>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+/* Navigation Styles */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+}
 
-export default FutureSection;
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #9333ea;
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #9333ea;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #a855f7, #10b981);
+  border-radius: 2px;
+}
+
+/* Responsive Typography */
+.hero-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+.hero-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .hero-description {
+    font-size: 1.125rem;
+  }
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(to right, #9333ea, #1f2937, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(to right, #a855f7, #10b981);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #9333ea, #059669);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #1f2937;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
