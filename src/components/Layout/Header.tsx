@@ -28,11 +28,11 @@ const Header: React.FC = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed top-4 left-4 right-4 z-50 max-w-7xl mx-auto mb-4"
+      className="fixed top-0 left-0 right-0 z-50 responsive-padding-sm"
     >
-      <div className="blur-sheet rounded-2xl shadow-xl">
-        <div className="px-4 lg:px-6">
-          <div className="flex justify-between items-center h-14 lg:h-16">
+      <div className="blur-sheet rounded-2xl shadow-xl max-w-7xl mx-auto">
+        <div className="responsive-padding-sm">
+          <div className="flex justify-between items-center min-h-[3.5rem]">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 space-x-reverse flex-shrink-0">
               <motion.div
@@ -42,19 +42,19 @@ const Header: React.FC = () => {
                 className="flex items-center space-x-2 space-x-reverse"
               >
                 <Heart className="w-6 h-6 text-purple-500" />
-                <span className="text-base sm:text-lg lg:text-xl font-black bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent whitespace-nowrap">
+                <span className="text-lg font-black bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent whitespace-nowrap">
                   مدیریت سلامت نقره‌ای
                 </span>
               </motion.div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-2 space-x-reverse">
+            <nav className="hidden md:flex items-center gap-2">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`relative text-sm font-black transition-all duration-300 whitespace-nowrap px-4 py-2 rounded-xl min-w-[80px] text-center ${
+                  className={`relative text-sm font-black transition-all duration-300 whitespace-nowrap px-4 py-2 rounded-xl min-w-[5rem] text-center ${
                     location.pathname === item.path
                       ? 'text-purple-600 bg-white/20 backdrop-blur-xl'
                       : 'text-gray-800 hover:text-purple-600 hover:bg-white/10'
@@ -94,9 +94,9 @@ const Header: React.FC = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.2 }}
-                className="md:hidden bg-white/20 backdrop-blur-xl rounded-2xl mt-2 overflow-hidden shadow-2xl"
+                className="md:hidden bg-white/20 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl content-spacing"
               >
-                <div className="py-2">
+                <div className="text-spacing">
                   {navItems.map((item, index) => (
                     <motion.div
                       key={item.path}

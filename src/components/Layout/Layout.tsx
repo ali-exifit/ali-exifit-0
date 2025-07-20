@@ -26,7 +26,7 @@ const Layout: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative main-container">
       {/* Animated background particles */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         {[...Array(8)].map((_, i) => (
@@ -56,7 +56,7 @@ const Layout: React.FC = () => {
       </div>
       
       <Header />
-      <main className="relative z-10">
+      <main className="relative z-10 section-container">
         <Outlet />
       </main>
       <Footer />

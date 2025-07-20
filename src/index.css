@@ -118,6 +118,60 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+/* New Responsive Spacing System */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.card-container {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.content-spacing {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.text-spacing {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 1rem);
+}
+
+/* Responsive padding system */
+.responsive-padding {
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.responsive-padding-sm {
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.responsive-padding-lg {
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+/* Responsive margins */
+.responsive-margin {
+  margin: clamp(1rem, 2.5vw, 2rem);
+}
+
+.responsive-margin-y {
+  margin-top: clamp(1rem, 2.5vw, 2rem);
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+}
 /* Improved mobile touch targets */
 @media (max-width: 768px) {
   button, a {

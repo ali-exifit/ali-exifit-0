@@ -20,20 +20,20 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-4" style={{ marginTop: '15px' }}>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden responsive-padding-lg">
       {/* Hero Content */}
-      <div className="blur-sheet rounded-3xl mx-4 sm:mx-6 lg:mx-8 max-w-5xl w-full relative">
+      <div className="blur-sheet rounded-3xl max-w-5xl w-full relative responsive-margin">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="relative z-10 text-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16 pb-20"
+          className="relative z-10 text-center responsive-padding content-spacing"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.2 }}
-            className="inline-flex items-center space-x-2 space-x-reverse bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-4 py-2 mb-6"
+            className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full px-4 py-2"
           >
             <Sparkles className="w-5 h-5 text-purple-600" />
             <span className="text-gray-800 font-black">نوآوری در سلامت دیجیتال</span>
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className="text-3xl sm:text-4xl lg:text-6xl font-black mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-6xl font-black leading-tight text-spacing"
           >
             <span className="bg-gradient-to-r from-purple-600 via-gray-800 to-emerald-600 bg-clip-text text-transparent">
               مدیریت سلامت
@@ -58,9 +58,9 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.4 }}
-            className="mb-8"
+            className="content-spacing"
           >
-            <p className="text-xl sm:text-2xl lg:text-3xl font-black text-emerald-600 mb-4">
+            <p className="text-xl sm:text-2xl lg:text-3xl font-black text-emerald-600">
               تیم حرفه‌ای، خدمات حرفه‌ای
             </p>
             <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed font-semibold">
@@ -73,13 +73,13 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link to="/products">
               <motion.button
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="group bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200 flex items-center space-x-3 space-x-reverse"
+                className="group bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200 flex items-center gap-3"
               >
                 <span>مشاهده محصولات</span>
                 <Play className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
