@@ -72,7 +72,6 @@ const FutureSection: React.FC = () => {
             <p className="text-base text-gray-700 max-w-3xl mx-auto font-semibold">
               نگاهی به برنامه‌های توسعه و نوآوری ما در شش ماه آینده
             </p>
-            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -83,7 +82,7 @@ const FutureSection: React.FC = () => {
                 whileHover={{ scale: 1.03, y: -5 }}
                 className="group"
               >
-                  <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
+                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 hover:bg-white/40 transition-all duration-200">
                   <div className="flex items-start space-x-4 space-x-reverse">
                     <motion.div
                       whileHover={{ rotate: 360 }}
@@ -94,40 +93,43 @@ const FutureSection: React.FC = () => {
                     </motion.div>
                     
                     <div className="flex-1">
-                        <div className="content-stack-sm">
-                          <h3 className="text-lg font-black text-gray-800 group-hover:text-purple-600 transition-colors">
-                        {plan.title}
-                      </h3>
-                            <p className="text-gray-700 leading-relaxed font-semibold">
-                        {plan.description}
-                      </p>
-                      <div className="flex items-center space-x-2 space-x-reverse">
-                        <Calendar className="w-5 h-5 text-purple-500" />
-                        <span className="text-purple-600 font-bold">
-                          {plan.timeline}
-                        </span>
+                      <div className="content-stack-sm">
+                        <h3 className="text-lg font-black text-gray-800 group-hover:text-purple-600 transition-colors">
+                          {plan.title}
+                        </h3>
+                        <p className="text-gray-700 leading-relaxed font-semibold">
+                          {plan.description}
+                        </p>
+                        <div className="flex items-center space-x-2 space-x-reverse">
+                          <Calendar className="w-5 h-5 text-purple-500" />
+                          <span className="text-purple-600 font-bold">
+                            {plan.timeline}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                        </div>
                   </div>
                 </div>
               </motion.div>
             ))}
-      <section className="relative">
-        <div className="blur-sheet rounded-3xl">
-          <motion.div
-            variants={itemVariants}
-            className="container mx-auto card-content"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200"
-            >
-              جزئیات بیشتر
-            </motion.button>
-          </motion.div>
           </div>
+
+          <section className="relative">
+            <div className="blur-sheet rounded-3xl">
+              <motion.div
+                variants={itemVariants}
+                className="container mx-auto card-content"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-2xl transition-all duration-200"
+                >
+                  جزئیات بیشتر
+                </motion.button>
+              </motion.div>
+            </div>
+          </section>
         </motion.div>
       </div>
     </section>
